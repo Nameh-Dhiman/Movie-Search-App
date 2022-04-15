@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trending</title>
+  </head>
+  <style>
+    #container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(auto, 10rem);
+      grid-gap: 2rem;
+      justify-content: center;
+    }
+    img {
+      width: 100%;
+      border-radius: 0.5rem;
+    }
+    #container > div {
+      box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+      border-radius: 0.5rem;
+    }
+  </style>
+  <body>
+    <div id="container"></div>
+  </body>
+  iv
+</html>
+<script>
+  //f3aaeb14b0f119789606d6c707e71eb0
+  //https://api.themoviedb.org/3/trending/all/day?api_key=f3aaeb14b0f119789606d6c707e71eb0
+
+  getData();
+  async function getData() {
+    try {
+      let res = await fetch(
+        "https://api.themoviedb.org/3/trending/all/day?api_key=f3aaeb14b0f119789606d6c707e71eb0"
+      );
+      let data = await res.json();
+      console.log("data:", data);
+
+      appendData(data.results);
+    } catch (er) {}
+  }
+
+  function appendData(data) {
+    data.forEach(function (el) {
+      let container = document.getElementById("container");
+
+      let div = document.createElement("div");
+
+      let imgDiv = document.createElement("div");
+
+      let img = document.createElement("img");
+      img.src = `https://www.themoviedb.org/t/p/w440_and_h660_face${el.backdrop_path}`;
+
+      imgDiv.append(img);
+
+      let title = document.createElement("h4");
+      title.innerText = el.original_title || el.original_name;
+
+      let rel = document.createElement("rel");
+      if (el.release_date == undefined) {
+        rel.innerText = "Release Date : " + "--";
+      } else {
+        rel.innerText = "Release Date : " + el.release_date;
+      }
+
+      div.append(imgDiv, title, rel);
+      container.append(div);
+    });
+  }
+</script>
