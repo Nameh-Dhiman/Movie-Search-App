@@ -7,12 +7,12 @@ Goal behind the project was to create an applicaion to apply all the basics of J
 
 * [Click Here](https://nameh-dhiman.github.io/Movie-Search-App/) to view the deployed website.
 
-###Credits
+### Credits
 ___
 
 * References: [MDN Docs](https://developer.mozilla.org/en-US/ ) | [W3Schools](https://www.w3schools.com/) | [OMDb API](https://www.omdbapi.com/)
 
-###Tech Stack
+### Tech Stack
 ___
 
 * HTML 5
